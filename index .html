@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="kk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Journey from Progress to Regret - A scrollytelling experience exploring Kazakh literature">
+    <meta name="description"
+        content="The Journey from Progress to Regret - A scrollytelling experience exploring Kazakh literature">
     <title>АДАМ ЖӘНЕ ТАБИҒАТ | Human & Nature</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -33,12 +37,12 @@
             }
         }
     </script>
-    
+
     <!-- GSAP & Plugins -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
-    
+
     <!-- Lenis Smooth Scroll -->
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 
@@ -46,7 +50,9 @@
         /* ============================================
            MASTER RESET & BASE STYLES
            ============================================ */
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -60,7 +66,7 @@
             --color-warm-accent-light: #A85454;
             --color-warm-text: #2D2A26;
             --color-warm-text-muted: #5C5854;
-            
+
             /* Cold Void Palette */
             --color-cold-bg: #1A202C;
             --color-cold-bg-secondary: #2D3748;
@@ -68,11 +74,11 @@
             --color-cold-accent-light: #A0AEC0;
             --color-cold-text: #E2E8F0;
             --color-cold-text-muted: #A0AEC0;
-            
+
             /* Typography Scale */
             --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
             --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            
+
             /* Fluid Typography */
             --fluid-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
             --fluid-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
@@ -84,7 +90,7 @@
             --fluid-4xl: clamp(3rem, 2rem + 5vw, 8rem);
             --fluid-5xl: clamp(4rem, 2.5rem + 7.5vw, 12rem);
             --fluid-6xl: clamp(5rem, 3rem + 10vw, 16rem);
-            
+
             /* Spacing */
             --space-xs: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
             --space-sm: clamp(0.75rem, 0.6rem + 0.75vw, 1.25rem);
@@ -92,12 +98,12 @@
             --space-lg: clamp(1.5rem, 1rem + 2.5vw, 4rem);
             --space-xl: clamp(2rem, 1.5rem + 2.5vw, 6rem);
             --space-2xl: clamp(3rem, 2rem + 5vw, 10rem);
-            
+
             /* Animation Timing */
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
             --ease-in-out-circ: cubic-bezier(0.85, 0, 0.15, 1);
-            
+
             /* Current Theme (Modified by JS) */
             --current-bg: var(--color-warm-bg);
             --current-text: var(--color-warm-text);
@@ -111,7 +117,8 @@
             text-rendering: optimizeLegibility;
         }
 
-        html.lenis, html.lenis body {
+        html.lenis,
+        html.lenis body {
             height: auto;
         }
 
@@ -177,8 +184,8 @@
             pointer-events: none;
             transform: translate(-50%, -50%) scale(1);
             transition: transform 0.15s var(--ease-out-expo),
-                        width 0.4s var(--ease-out-expo),
-                        height 0.4s var(--ease-out-expo);
+                width 0.4s var(--ease-out-expo),
+                height 0.4s var(--ease-out-expo);
             will-change: transform, width, height;
         }
 
@@ -202,9 +209,9 @@
             pointer-events: none;
             transform: translate(-50%, -50%);
             transition: transform 0.3s var(--ease-out-quart),
-                        width 0.5s var(--ease-out-expo),
-                        height 0.5s var(--ease-out-expo),
-                        border-color 0.3s ease;
+                width 0.5s var(--ease-out-expo),
+                height 0.5s var(--ease-out-expo),
+                border-color 0.3s ease;
             will-change: transform, width, height;
         }
 
@@ -219,6 +226,7 @@
             .cursor-wrapper {
                 display: none;
             }
+
             body {
                 cursor: auto;
             }
@@ -449,7 +457,7 @@
             left: -20%;
             width: 140%;
             height: 140%;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 20% 80%, rgba(140, 58, 58, 0.05) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(140, 58, 58, 0.03) 0%, transparent 50%),
                 radial-gradient(circle at 50% 50%, rgba(140, 58, 58, 0.02) 0%, transparent 70%);
@@ -457,10 +465,23 @@
         }
 
         @keyframes heroPatternFloat {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(2%, -2%) rotate(1deg); }
-            50% { transform: translate(-1%, 1%) rotate(-0.5deg); }
-            75% { transform: translate(1%, 2%) rotate(0.5deg); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(2%, -2%) rotate(1deg);
+            }
+
+            50% {
+                transform: translate(-1%, 1%) rotate(-0.5deg);
+            }
+
+            75% {
+                transform: translate(1%, 2%) rotate(0.5deg);
+            }
         }
 
         .hero-content {
@@ -579,8 +600,15 @@
         }
 
         @keyframes scrollArrowPulse {
-            0%, 100% { transform: translateY(-100%); }
-            50% { transform: translateY(200%); }
+
+            0%,
+            100% {
+                transform: translateY(-100%);
+            }
+
+            50% {
+                transform: translateY(200%);
+            }
         }
 
         .hero-decorative-line {
@@ -738,13 +766,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                to top,
-                rgba(45, 42, 38, 0.95) 0%,
-                rgba(45, 42, 38, 0.7) 30%,
-                rgba(45, 42, 38, 0.2) 60%,
-                transparent 100%
-            );
+            background: linear-gradient(to top,
+                    rgba(45, 42, 38, 0.95) 0%,
+                    rgba(45, 42, 38, 0.7) 30%,
+                    rgba(45, 42, 38, 0.2) 60%,
+                    transparent 100%);
             z-index: 1;
         }
 
@@ -956,7 +982,15 @@
             height: 130%;
             object-fit: cover;
             filter: saturate(0.7) brightness(0.8);
-            will-change: transform;
+            will-change: transform, opacity;
+            opacity: 0;
+            transition: opacity 1.2s var(--ease-out-expo);
+            z-index: 0;
+        }
+
+        .atau-sticky-image.is-visible {
+            opacity: 1;
+            z-index: 1;
         }
 
         .atau-sticky-overlay {
@@ -965,12 +999,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                to right,
-                transparent 0%,
-                rgba(26, 32, 44, 0.3) 50%,
-                rgba(26, 32, 44, 0.9) 100%
-            );
+            background: linear-gradient(to right,
+                    transparent 0%,
+                    rgba(26, 32, 44, 0.3) 50%,
+                    rgba(26, 32, 44, 0.9) 100%);
             z-index: 1;
         }
 
@@ -1128,8 +1160,8 @@
             overflow: hidden;
             opacity: 0;
             transition: max-height 0.6s var(--ease-out-expo),
-                        opacity 0.4s var(--ease-out-expo),
-                        padding 0.6s var(--ease-out-expo);
+                opacity 0.4s var(--ease-out-expo),
+                padding 0.6s var(--ease-out-expo);
         }
 
         .character-item.is-open .character-description {
@@ -1322,12 +1354,10 @@
             }
 
             .atau-sticky-overlay {
-                background: linear-gradient(
-                    to bottom,
-                    transparent 0%,
-                    rgba(26, 32, 44, 0.5) 70%,
-                    rgba(26, 32, 44, 1) 100%
-                );
+                background: linear-gradient(to bottom,
+                        transparent 0%,
+                        rgba(26, 32, 44, 0.5) 70%,
+                        rgba(26, 32, 44, 1) 100%);
             }
         }
 
@@ -1394,7 +1424,7 @@
         }
 
         /* Stagger Children */
-        .stagger-children > * {
+        .stagger-children>* {
             opacity: 0;
             transform: translateY(30px);
         }
@@ -1423,6 +1453,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- ============================================
          PRELOADER
@@ -1483,28 +1514,28 @@
             <div class="hero-background">
                 <div class="hero-bg-pattern"></div>
             </div>
-            
+
             <div class="hero-content">
                 <div class="hero-title-container">
                     <h1 class="hero-title" id="hero-title">АДАМ ЖӘНЕ ТАБИҒАТ</h1>
                 </div>
-                
+
                 <div class="hero-subtitle-container">
                     <p class="hero-subtitle" id="hero-subtitle">Игеруден өкінішке дейін</p>
                 </div>
-                
+
                 <div class="hero-meta" id="hero-meta">
                     <span class="hero-meta-item">Қазақ әдебиеті</span>
                     <span class="hero-meta-item">1929 — 1991</span>
                     <span class="hero-meta-item">Scrollytelling</span>
                 </div>
             </div>
-            
+
             <div class="hero-scroll-prompt" id="hero-scroll">
                 <span class="hero-scroll-text">Scroll to explore</span>
                 <div class="hero-scroll-arrow"></div>
             </div>
-            
+
             <div class="hero-decorative-line hero-decorative-line--left" id="hero-line-left"></div>
             <div class="hero-decorative-line hero-decorative-line--right" id="hero-line-right"></div>
             <div class="hero-decorative-line hero-decorative-line--bottom" id="hero-line-bottom"></div>
@@ -1517,87 +1548,75 @@
                 <p class="section-title-small">Индустриалды романтика</p>
                 <h2 class="section-title-large">Темір тұлпар</h2>
             </div>
-            
+
             <div class="horizontal-wrapper" id="horizontal-wrapper">
                 <div class="horizontal-container" id="horizontal-container">
                     <div class="horizontal-spacer"></div>
-                    
+
                     <!-- Card 1 -->
                     <article class="horizontal-card" data-cursor="text">
                         <div class="parallax-image-wrapper">
-                            <img 
-                                src="assets/images/turksib-train.png" 
-                                alt="Steam train in desert" 
-                                class="parallax-image horizontal-card-image"
-                                loading="lazy"
-                            >
+                            <img src="assets/images/turksib-train.png" alt="Steam train in desert"
+                                class="parallax-image horizontal-card-image" loading="lazy">
                         </div>
                         <div class="horizontal-card-overlay"></div>
                         <div class="horizontal-card-content">
                             <span class="horizontal-card-number">01</span>
                             <h3 class="horizontal-card-title">1929. ТҮРКСІБ.</h3>
-                            <p class="horizontal-card-desc">Түркістан-Сібір темір жолы — кеңестік индустрияландырудың символы және жаңа дәуірдің бастауы.</p>
+                            <p class="horizontal-card-desc">Түркістан-Сібір темір жолы — кеңестік индустрияландырудың
+                                символы және жаңа дәуірдің бастауы.</p>
                             <div class="horizontal-card-line"></div>
                         </div>
                     </article>
-                    
+
                     <!-- Card 2 -->
                     <article class="horizontal-card" data-cursor="text">
                         <div class="parallax-image-wrapper">
-                            <img 
-                                src="assets/images/turksib-steppe.png" 
-                                alt="Desert railway" 
-                                class="parallax-image horizontal-card-image"
-                                loading="lazy"
-                            >
+                            <img src="assets/images/turksib-steppe.png" alt="Desert railway"
+                                class="parallax-image horizontal-card-image" loading="lazy">
                         </div>
                         <div class="horizontal-card-overlay"></div>
                         <div class="horizontal-card-content">
                             <span class="horizontal-card-number">02</span>
                             <h3 class="horizontal-card-title">«Сұр даланың» оянуы</h3>
-                            <p class="horizontal-card-desc">Жансүгіров қаламынан туған жолдар — дала кеңістігінің жаңа өмірге жаңғыруы, табиғат пен техниканың алғашқы кездесуі.</p>
+                            <p class="horizontal-card-desc">Жансүгіров қаламынан туған жолдар — дала кеңістігінің жаңа
+                                өмірге жаңғыруы, табиғат пен техниканың алғашқы кездесуі.</p>
                             <div class="horizontal-card-line"></div>
                         </div>
                     </article>
-                    
+
                     <!-- Card 3 -->
                     <article class="horizontal-card" data-cursor="text">
                         <div class="parallax-image-wrapper">
-                            <img 
-                                src="assets/images/turksib-engine.png" 
-                                alt="Industrial machinery" 
-                                class="parallax-image horizontal-card-image"
-                                loading="lazy"
-                            >
+                            <img src="assets/images/turksib-engine.png" alt="Industrial machinery"
+                                class="parallax-image horizontal-card-image" loading="lazy">
                         </div>
                         <div class="horizontal-card-overlay"></div>
                         <div class="horizontal-card-content">
                             <span class="horizontal-card-number">03</span>
                             <h3 class="horizontal-card-title">Темір тұлпар — күш символы</h3>
-                            <p class="horizontal-card-desc">Пойыз — жаңа өмір мен прогрестің бейнесі. Қозғалыс ырғағы — болашаққа деген сенімнің әуені.</p>
+                            <p class="horizontal-card-desc">Пойыз — жаңа өмір мен прогрестің бейнесі. Қозғалыс ырғағы —
+                                болашаққа деген сенімнің әуені.</p>
                             <div class="horizontal-card-line"></div>
                         </div>
                     </article>
-                    
+
                     <!-- Card 4 -->
                     <article class="horizontal-card" data-cursor="text">
                         <div class="parallax-image-wrapper">
-                            <img 
-                                src="assets/images/turksib-workers.png" 
-                                alt="Workers" 
-                                class="parallax-image horizontal-card-image"
-                                loading="lazy"
-                            >
+                            <img src="assets/images/turksib-workers.png" alt="Workers"
+                                class="parallax-image horizontal-card-image" loading="lazy">
                         </div>
                         <div class="horizontal-card-overlay"></div>
                         <div class="horizontal-card-content">
                             <span class="horizontal-card-number">04</span>
                             <h3 class="horizontal-card-title">Еңбек романтикасы</h3>
-                            <p class="horizontal-card-desc">Құрылысшылар — жаңа әлемнің жаратушылары. Олардың қолы — болашақтың іргетасын қалаған күш.</p>
+                            <p class="horizontal-card-desc">Құрылысшылар — жаңа әлемнің жаратушылары. Олардың қолы —
+                                болашақтың іргетасын қалаған күш.</p>
                             <div class="horizontal-card-line"></div>
                         </div>
                     </article>
-                    
+
                     <div class="horizontal-spacer"></div>
                 </div>
             </div>
@@ -1624,47 +1643,51 @@
                 <p class="section-title-small">Экологиялық апат</p>
                 <h2 class="section-title-large">Атау-Кере</h2>
             </div>
-            
+
             <div class="atau-sticky-container">
                 <div class="atau-sticky-image-wrapper">
-                    <img 
-                        src="assets/images/atau-forest.png" 
-                        alt="Misty forest" 
-                        class="atau-sticky-image parallax-image"
-                        id="atau-sticky-image"
-                        loading="lazy"
-                    >
+                    <!-- Image 1: Forest -->
+                    <img src="assets/images/atau-forest.png" alt="Misty forest"
+                        class="atau-sticky-image parallax-image is-visible" data-image-index="1" loading="lazy">
+                    <!-- Image 2: Honey/Poison -->
+                    <img src="assets/images/atau-honey.png" alt="Honey bee with dark honey"
+                        class="atau-sticky-image parallax-image" data-image-index="2" loading="lazy">
+                    <!-- Image 3: Characters -->
+                    <img src="assets/images/atau-characters.png" alt="Silhouettes in mist"
+                        class="atau-sticky-image parallax-image" data-image-index="3" loading="lazy">
                     <div class="atau-sticky-overlay"></div>
                     <div class="atau-sticky-decoration">
                         <span class="atau-sticky-decoration-text">ӨКІНІШ</span>
                     </div>
                 </div>
-                
+
                 <div class="atau-text-wrapper">
                     <!-- Block 1 -->
                     <div class="atau-text-block" id="atau-block-1">
                         <span class="atau-block-number">01 — Кіріспе</span>
                         <h3 class="atau-block-title">АТАУ-КЕРЕ. РУХАНИ АПАТ.</h3>
                         <p class="atau-block-text">
-                            Оралхан Бөкей қаламынан туған «Атау-Кере» — жай ғана повесть емес. Бұл — адамзаттың табиғатпен, өзімен, рухани тамырларымен үзілген байланысының ащы жыры.
+                            Оралхан Бөкей қаламынан туған «Атау-Кере» — жай ғана повесть емес. Бұл — адамзаттың
+                            табиғатпен, өзімен, рухани тамырларымен үзілген байланысының ащы жыры.
                         </p>
                         <blockquote class="atau-block-quote">
                             «Табиғатты жаулап алу оңай. Бірақ одан кейін адам өзін-өзі жаулап ала ма?»
                         </blockquote>
                     </div>
-                    
+
                     <!-- Block 2 -->
                     <div class="atau-text-block" id="atau-block-2">
                         <span class="atau-block-number">02 — Символика</span>
                         <h3 class="atau-block-title">Бал мен у</h3>
                         <p class="atau-block-text">
-                            Адамгершілік жоғалған жерде бал беретін араның өзі у жинайды. Ара — табиғаттың айнасы. Оның уы — адамның рухани азғындауының бейнесі.
+                            Адамгершілік жоғалған жерде бал беретін араның өзі у жинайды. Ара — табиғаттың айнасы. Оның
+                            уы — адамның рухани азғындауының бейнесі.
                         </p>
                         <blockquote class="atau-block-quote">
                             «Ара бал жинай алмай қалғанда, адам да рухани азық таба алмай қалады.»
                         </blockquote>
                     </div>
-                    
+
                     <!-- Block 3 - Characters -->
                     <div class="atau-text-block" id="atau-block-3">
                         <span class="atau-block-number">03 — Кейіпкерлер</span>
@@ -1672,7 +1695,7 @@
                         <p class="atau-block-text">
                             Әр кейіпкер — бір дәуірдің бейнесі. Олардың тағдыры — біздің ортақ тағдырымыздың айнасы.
                         </p>
-                        
+
                         <div class="character-list">
                             <!-- Таған -->
                             <div class="character-item" data-cursor="hover">
@@ -1686,11 +1709,12 @@
                                     </span>
                                 </div>
                                 <div class="character-description">
-                                    Рухани дағдарысқа ұшыраған ғалым. Білімі бар, бірақ сол білім оны құтқара алмайды. Табиғаттан алыстаған адамның трагедиясы — Тағанның тағдыры.
+                                    Рухани дағдарысқа ұшыраған ғалым. Білімі бар, бірақ сол білім оны құтқара алмайды.
+                                    Табиғаттан алыстаған адамның трагедиясы — Тағанның тағдыры.
                                     <span class="character-tag">Ғылым мен рух</span>
                                 </div>
                             </div>
-                            
+
                             <!-- Ерік -->
                             <div class="character-item" data-cursor="hover">
                                 <div class="character-item-header">
@@ -1703,11 +1727,12 @@
                                     </span>
                                 </div>
                                 <div class="character-description">
-                                    Жаңа заманның «маңгүрті». Тарихын, тілін, дәстүрін ұмытқан ұрпақтың өкілі. Оның бейнесі — рухани жоғалудың ең қатал түрі.
+                                    Жаңа заманның «маңгүрті». Тарихын, тілін, дәстүрін ұмытқан ұрпақтың өкілі. Оның
+                                    бейнесі — рухани жоғалудың ең қатал түрі.
                                     <span class="character-tag">Жоғалған ұрпақ</span>
                                 </div>
                             </div>
-                            
+
                             <!-- Нүрке ата -->
                             <div class="character-item" data-cursor="hover">
                                 <div class="character-item-header">
@@ -1720,7 +1745,8 @@
                                     </span>
                                 </div>
                                 <div class="character-description">
-                                    Дәстүр сақтаушысы. Ескі дүниенің соңғы өкілі. Оның даналығы — жаңа ұрпаққа жетпей қалған мұра. Табиғатпен үндес өмір сүрудің соңғы куәсі.
+                                    Дәстүр сақтаушысы. Ескі дүниенің соңғы өкілі. Оның даналығы — жаңа ұрпаққа жетпей
+                                    қалған мұра. Табиғатпен үндес өмір сүрудің соңғы куәсі.
                                     <span class="character-tag">Дәстүр мен даналық</span>
                                 </div>
                             </div>
@@ -1736,7 +1762,8 @@
             <div class="epilogue-content">
                 <span class="epilogue-quote-mark">"</span>
                 <p class="epilogue-text" id="epilogue-text">
-                    Шынайы даму — тек зауыттар мен темір жолдар емес, жан экологиясын сақтау. Адам табиғатпен бірге өссе ғана — толық адам.
+                    Шынайы даму — тек зауыттар мен темір жолдар емес, жан экологиясын сақтау. Адам табиғатпен бірге өссе
+                    ғана — толық адам.
                 </p>
                 <div class="epilogue-divider"></div>
                 <div class="epilogue-credits">
@@ -1773,10 +1800,10 @@
         // ============================================
         // INITIALIZATION & GLOBAL VARIABLES
         // ============================================
-        
+
         // Register GSAP Plugins
         gsap.registerPlugin(ScrollTrigger);
-        
+
         // Global State
         const state = {
             isLoading: true,
@@ -1788,7 +1815,7 @@
             isMobile: window.matchMedia('(hover: none) and (pointer: coarse)').matches,
             isReducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches
         };
-        
+
         // DOM Elements Cache
         const DOM = {
             preloader: document.getElementById('preloader'),
@@ -1812,21 +1839,21 @@
             transitionBg: document.getElementById('transition-bg'),
             transitionText: document.getElementById('transition-text'),
             transitionYear: document.getElementById('transition-year'),
+            transitionYear: document.getElementById('transition-year'),
             transitionDots: document.querySelectorAll('.transition-dot'),
-            atauStickyImage: document.getElementById('atau-sticky-image'),
             atauBlocks: document.querySelectorAll('.atau-text-block'),
             characterItems: document.querySelectorAll('.character-item'),
             epilogueText: document.getElementById('epilogue-text'),
             magneticElements: document.querySelectorAll('.magnetic'),
             parallaxImages: document.querySelectorAll('.parallax-image')
         };
-        
+
         // ============================================
         // LENIS SMOOTH SCROLL
         // ============================================
-        
+
         let lenis;
-        
+
         function initLenis() {
             lenis = new Lenis({
                 duration: 1.2,
@@ -1838,39 +1865,39 @@
                 touchMultiplier: 2,
                 infinite: false,
             });
-            
+
             // Connect Lenis to GSAP ScrollTrigger
             lenis.on('scroll', ScrollTrigger.update);
-            
+
             gsap.ticker.add((time) => {
                 lenis.raf(time * 1000);
             });
-            
+
             gsap.ticker.lagSmoothing(0);
         }
-        
+
         // ============================================
         // GRAIN/NOISE OVERLAY
         // ============================================
-        
+
         function initGrainOverlay() {
             const canvas = DOM.grainCanvas;
             const ctx = canvas.getContext('2d');
-            
+
             // Set canvas size
             function resizeCanvas() {
                 canvas.width = window.innerWidth * 2;
                 canvas.height = window.innerHeight * 2;
             }
-            
+
             resizeCanvas();
             window.addEventListener('resize', resizeCanvas);
-            
+
             // Generate noise
             function generateNoise() {
                 const imageData = ctx.createImageData(canvas.width, canvas.height);
                 const data = imageData.data;
-                
+
                 for (let i = 0; i < data.length; i += 4) {
                     const value = Math.random() * 255;
                     data[i] = value;     // R
@@ -1878,10 +1905,10 @@
                     data[i + 2] = value; // B
                     data[i + 3] = 255;   // A
                 }
-                
+
                 ctx.putImageData(imageData, 0, 0);
             }
-            
+
             // Animate noise (subtle movement)
             let noiseFrame = 0;
             function animateNoise() {
@@ -1891,54 +1918,54 @@
                 }
                 requestAnimationFrame(animateNoise);
             }
-            
+
             generateNoise();
             if (!state.isReducedMotion) {
                 animateNoise();
             }
         }
-        
+
         // ============================================
         // CUSTOM CURSOR
         // ============================================
-        
+
         function initCustomCursor() {
             if (state.isMobile) return;
-            
+
             const cursor = DOM.cursor;
             const follower = DOM.cursorFollower;
-            
+
             // Mouse move handler
             document.addEventListener('mousemove', (e) => {
                 state.mousePosition.x = e.clientX;
                 state.mousePosition.y = e.clientY;
             });
-            
+
             // Cursor animation loop
             function animateCursor() {
                 // Smooth follow for main cursor
                 state.cursorPosition.x += (state.mousePosition.x - state.cursorPosition.x) * 0.15;
                 state.cursorPosition.y += (state.mousePosition.y - state.cursorPosition.y) * 0.15;
-                
+
                 // Smoother follow for follower
                 state.followerPosition.x += (state.mousePosition.x - state.followerPosition.x) * 0.08;
                 state.followerPosition.y += (state.mousePosition.y - state.followerPosition.y) * 0.08;
-                
+
                 cursor.style.left = state.cursorPosition.x + 'px';
                 cursor.style.top = state.cursorPosition.y + 'px';
-                
+
                 follower.style.left = state.followerPosition.x + 'px';
                 follower.style.top = state.followerPosition.y + 'px';
-                
+
                 requestAnimationFrame(animateCursor);
             }
-            
+
             animateCursor();
-            
+
             // Hover states
             const hoverElements = document.querySelectorAll('[data-cursor="hover"]');
             const textElements = document.querySelectorAll('[data-cursor="text"]');
-            
+
             hoverElements.forEach(el => {
                 el.addEventListener('mouseenter', () => {
                     cursor.classList.add('cursor-hover');
@@ -1949,7 +1976,7 @@
                     follower.classList.remove('cursor-hover');
                 });
             });
-            
+
             textElements.forEach(el => {
                 el.addEventListener('mouseenter', () => {
                     cursor.classList.add('cursor-text');
@@ -1960,30 +1987,30 @@
                     follower.classList.remove('cursor-hover');
                 });
             });
-            
+
             // Hide cursor when leaving window
             document.addEventListener('mouseleave', () => {
                 gsap.to([cursor, follower], { opacity: 0, duration: 0.3 });
             });
-            
+
             document.addEventListener('mouseenter', () => {
                 gsap.to([cursor, follower], { opacity: 1, duration: 0.3 });
             });
         }
-        
+
         // ============================================
         // MAGNETIC EFFECT
         // ============================================
-        
+
         function initMagneticEffect() {
             if (state.isMobile) return;
-            
+
             DOM.magneticElements.forEach(el => {
                 el.addEventListener('mousemove', (e) => {
                     const rect = el.getBoundingClientRect();
                     const x = e.clientX - rect.left - rect.width / 2;
                     const y = e.clientY - rect.top - rect.height / 2;
-                    
+
                     gsap.to(el, {
                         x: x * 0.3,
                         y: y * 0.3,
@@ -1991,7 +2018,7 @@
                         ease: 'power2.out'
                     });
                 });
-                
+
                 el.addEventListener('mouseleave', () => {
                     gsap.to(el, {
                         x: 0,
@@ -2002,15 +2029,15 @@
                 });
             });
         }
-        
+
         // ============================================
         // TEXT SPLITTING
         // ============================================
-        
+
         function splitTextIntoChars(element) {
             const text = element.textContent;
             element.innerHTML = '';
-            
+
             text.split('').forEach((char, index) => {
                 const span = document.createElement('span');
                 span.className = 'char';
@@ -2018,24 +2045,24 @@
                 span.textContent = char === ' ' ? '\u00A0' : char;
                 element.appendChild(span);
             });
-            
+
             return element.querySelectorAll('.char');
         }
-        
+
         // ============================================
         // PRELOADER
         // ============================================
-        
+
         function initPreloader() {
             return new Promise((resolve) => {
                 const counter = DOM.preloaderCounter;
                 const line = DOM.preloaderLine;
                 const reveal = DOM.preloaderReveal;
                 const preloader = DOM.preloader;
-                
+
                 // Counter animation
                 let count = { value: 0 };
-                
+
                 gsap.to(count, {
                     value: 100,
                     duration: 2.5,
@@ -2044,14 +2071,14 @@
                         counter.textContent = Math.round(count.value);
                     }
                 });
-                
+
                 // Line animation
                 gsap.to(line, {
                     scaleX: 1,
                     duration: 2.5,
                     ease: 'power2.inOut'
                 });
-                
+
                 // After counter completes, reveal content
                 gsap.timeline({ delay: 2.8 })
                     .to(reveal, {
@@ -2071,18 +2098,18 @@
                     });
             });
         }
-        
+
         // ============================================
         // HERO ANIMATIONS
         // ============================================
-        
+
         function initHeroAnimations() {
             // Split title into characters
             const chars = splitTextIntoChars(DOM.heroTitle);
-            
+
             // Create timeline
             const tl = gsap.timeline({ delay: 0.2 });
-            
+
             // Animate characters
             tl.to(chars, {
                 y: 0,
@@ -2091,45 +2118,45 @@
                 stagger: 0.03,
                 ease: 'power4.out'
             })
-            
-            // Animate subtitle
-            .to(DOM.heroSubtitle, {
-                y: 0,
-                opacity: 1,
-                duration: 1,
-                ease: 'power4.out'
-            }, '-=0.8')
-            
-            // Animate meta
-            .to(DOM.heroMeta, {
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                ease: 'power3.out'
-            }, '-=0.6')
-            
-            // Animate decorative lines
-            .to([DOM.heroLineLeft, DOM.heroLineRight], {
-                opacity: 0.3,
-                scaleY: 1,
-                duration: 1,
-                ease: 'power3.out'
-            }, '-=0.4')
-            
-            .to(DOM.heroLineBottom, {
-                opacity: 0.2,
-                scaleX: 1,
-                duration: 1.2,
-                ease: 'power3.out'
-            }, '-=0.8')
-            
-            // Animate scroll prompt
-            .to(DOM.heroScroll, {
-                opacity: 1,
-                duration: 0.8,
-                ease: 'power2.out'
-            }, '-=0.4');
-            
+
+                // Animate subtitle
+                .to(DOM.heroSubtitle, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: 'power4.out'
+                }, '-=0.8')
+
+                // Animate meta
+                .to(DOM.heroMeta, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: 'power3.out'
+                }, '-=0.6')
+
+                // Animate decorative lines
+                .to([DOM.heroLineLeft, DOM.heroLineRight], {
+                    opacity: 0.3,
+                    scaleY: 1,
+                    duration: 1,
+                    ease: 'power3.out'
+                }, '-=0.4')
+
+                .to(DOM.heroLineBottom, {
+                    opacity: 0.2,
+                    scaleX: 1,
+                    duration: 1.2,
+                    ease: 'power3.out'
+                }, '-=0.8')
+
+                // Animate scroll prompt
+                .to(DOM.heroScroll, {
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: 'power2.out'
+                }, '-=0.4');
+
             // Parallax effect on scroll
             gsap.to(DOM.heroTitle, {
                 y: -100,
@@ -2140,7 +2167,7 @@
                     scrub: 1
                 }
             });
-            
+
             gsap.to(DOM.heroSubtitle, {
                 y: -50,
                 scrollTrigger: {
@@ -2151,26 +2178,26 @@
                 }
             });
         }
-        
+
         // ============================================
         // HORIZONTAL SCROLL SECTION
         // ============================================
-        
+
         function initHorizontalScroll() {
             const wrapper = DOM.horizontalWrapper;
             const container = DOM.horizontalContainer;
             const cards = container.querySelectorAll('.horizontal-card');
-            
+
             // Calculate total scroll width
             let totalWidth = 0;
             cards.forEach(card => {
                 totalWidth += card.offsetWidth + parseInt(getComputedStyle(card).marginRight);
             });
             totalWidth += window.innerWidth * 0.2; // Add spacers
-            
+
             // Set wrapper height for scroll distance
             const scrollDistance = totalWidth - window.innerWidth;
-            
+
             gsap.to(container, {
                 x: -scrollDistance,
                 ease: 'none',
@@ -2184,11 +2211,11 @@
                     invalidateOnRefresh: true
                 }
             });
-            
+
             // Parallax for images inside cards
             cards.forEach((card, index) => {
                 const image = card.querySelector('.parallax-image');
-                
+
                 gsap.to(image, {
                     x: -50,
                     ease: 'none',
@@ -2201,18 +2228,18 @@
                 });
             });
         }
-        
+
         // ============================================
         // TRANSITION SECTION
         // ============================================
-        
+
         function initTransitionSection() {
             const section = document.getElementById('transition-section');
             const bg = DOM.transitionBg;
             const text = DOM.transitionText;
             const year = DOM.transitionYear;
             const dots = DOM.transitionDots;
-            
+
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: section,
@@ -2221,38 +2248,38 @@
                     scrub: 1
                 }
             });
-            
+
             // Background color transition
             tl.to(bg, {
                 scaleY: 1,
                 duration: 1,
                 ease: 'power2.inOut'
             }, 0)
-            
-            // Text color transition
-            .to(text, {
-                color: '#E2E8F0',
-                duration: 0.5
-            }, 0.3)
-            
-            .to(year, {
-                color: '#E2E8F0',
-                duration: 0.5
-            }, 0.3)
-            
-            // Animate dots
-            .to(dots, {
-                opacity: 1,
-                stagger: 0.1,
-                duration: 0.3
-            }, 0.2)
-            
-            .to(dots, {
-                backgroundColor: '#718096',
-                stagger: 0.1,
-                duration: 0.3
-            }, 0.5);
-            
+
+                // Text color transition
+                .to(text, {
+                    color: '#E2E8F0',
+                    duration: 0.5
+                }, 0.3)
+
+                .to(year, {
+                    color: '#E2E8F0',
+                    duration: 0.5
+                }, 0.3)
+
+                // Animate dots
+                .to(dots, {
+                    opacity: 1,
+                    stagger: 0.1,
+                    duration: 0.3
+                }, 0.2)
+
+                .to(dots, {
+                    backgroundColor: '#718096',
+                    stagger: 0.1,
+                    duration: 0.3
+                }, 0.5);
+
             // Add classes for selection styles
             ScrollTrigger.create({
                 trigger: section,
@@ -2270,53 +2297,79 @@
                 }
             });
         }
-        
+
         // ============================================
         // ATAU-KERE SECTION
         // ============================================
-        
+
         function initAtauSection() {
-            const image = DOM.atauStickyImage;
+            const wrapper = document.querySelector('.atau-sticky-image-wrapper');
+            const images = wrapper.querySelectorAll('.atau-sticky-image');
             const blocks = DOM.atauBlocks;
-            
-            // Parallax on sticky image
-            gsap.to(image, {
-                y: 100,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: '#atau-section',
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    scrub: 1
-                }
+
+            // Parallax on sticky images container
+            // We animate the images themselves for parallax
+            images.forEach(image => {
+                gsap.to(image, {
+                    y: 100,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '#atau-section',
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1
+                    }
+                });
             });
-            
-            // Activate text blocks on scroll
+
+            // Activate text blocks on scroll AND switch images
             blocks.forEach((block, index) => {
                 ScrollTrigger.create({
                     trigger: block,
                     start: 'top 60%',
                     end: 'bottom 40%',
-                    onEnter: () => block.classList.add('is-active'),
-                    onLeave: () => block.classList.remove('is-active'),
-                    onEnterBack: () => block.classList.add('is-active'),
-                    onLeaveBack: () => block.classList.remove('is-active')
+                    onEnter: () => {
+                        block.classList.add('is-active');
+                        updateAtauImage(index + 1);
+                    },
+                    onLeave: () => {
+                        block.classList.remove('is-active');
+                    },
+                    onEnterBack: () => {
+                        block.classList.add('is-active');
+                        updateAtauImage(index + 1);
+                    },
+                    onLeaveBack: () => {
+                        block.classList.remove('is-active');
+                        if (index > 0) updateAtauImage(index); // Revert to previous image if going back
+                    }
                 });
             });
+
+            function updateAtauImage(targetIndex) {
+                // Find image with data-image-index == targetIndex
+                images.forEach(img => {
+                    if (parseInt(img.getAttribute('data-image-index')) === targetIndex) {
+                        img.classList.add('is-visible');
+                    } else {
+                        img.classList.remove('is-visible');
+                    }
+                });
+            }
         }
-        
+
         // ============================================
         // CHARACTER ACCORDION
         // ============================================
-        
+
         function initCharacterAccordion() {
             DOM.characterItems.forEach(item => {
                 item.addEventListener('click', () => {
                     const isOpen = item.classList.contains('is-open');
-                    
+
                     // Close all items
                     DOM.characterItems.forEach(i => i.classList.remove('is-open'));
-                    
+
                     // Open clicked item if it wasn't open
                     if (!isOpen) {
                         item.classList.add('is-open');
@@ -2324,15 +2377,15 @@
                 });
             });
         }
-        
+
         // ============================================
         // EPILOGUE ANIMATIONS
         // ============================================
-        
+
         function initEpilogueAnimations() {
             const section = document.getElementById('epilogue');
             const content = section.querySelector('.epilogue-content');
-            
+
             gsap.from(content.children, {
                 y: 60,
                 opacity: 0,
@@ -2345,11 +2398,11 @@
                 }
             });
         }
-        
+
         // ============================================
         // PROGRESS BAR
         // ============================================
-        
+
         function initProgressBar() {
             gsap.to(DOM.progressBarFill, {
                 width: '100%',
@@ -2362,16 +2415,16 @@
                 }
             });
         }
-        
+
         // ============================================
         // PARALLAX IMAGES
         // ============================================
-        
+
         function initParallaxImages() {
             DOM.parallaxImages.forEach(image => {
                 if (image.closest('.horizontal-card')) return; // Skip horizontal section images
-                if (image.id === 'atau-sticky-image') return; // Skip atau sticky image
-                
+                if (image.classList.contains('atau-sticky-image')) return; // Skip atau sticky images
+
                 gsap.to(image, {
                     y: 50,
                     ease: 'none',
@@ -2384,18 +2437,18 @@
                 });
             });
         }
-        
+
         // ============================================
         // SMOOTH SCROLL TO ANCHORS
         // ============================================
-        
+
         function initSmoothScrollLinks() {
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', (e) => {
                     e.preventDefault();
                     const targetId = anchor.getAttribute('href');
                     const target = document.querySelector(targetId);
-                    
+
                     if (target && lenis) {
                         lenis.scrollTo(target, {
                             offset: 0,
@@ -2406,14 +2459,14 @@
                 });
             });
         }
-        
+
         // ============================================
         // RESIZE HANDLER
         // ============================================
-        
+
         function initResizeHandler() {
             let resizeTimeout;
-            
+
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimeout);
                 resizeTimeout = setTimeout(() => {
@@ -2421,11 +2474,11 @@
                 }, 250);
             });
         }
-        
+
         // ============================================
         // BODY COLOR TRANSITION
         // ============================================
-        
+
         function initBodyColorTransition() {
             ScrollTrigger.create({
                 trigger: '#transition-section',
@@ -2441,27 +2494,27 @@
                 }
             });
         }
-        
+
         // ============================================
         // INITIALIZE EVERYTHING
         // ============================================
-        
+
         async function init() {
             // Initialize Lenis first
             initLenis();
-            
+
             // Initialize grain overlay
             initGrainOverlay();
-            
+
             // Initialize custom cursor
             initCustomCursor();
-            
+
             // Initialize magnetic effect
             initMagneticEffect();
-            
+
             // Wait for preloader
             await initPreloader();
-            
+
             // Initialize all scroll-based animations
             initHeroAnimations();
             initHorizontalScroll();
@@ -2474,22 +2527,23 @@
             initBodyColorTransition();
             initSmoothScrollLinks();
             initResizeHandler();
-            
+
             // Refresh ScrollTrigger after all initializations
             ScrollTrigger.refresh();
         }
-        
+
         // Start when DOM is ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', init);
         } else {
             init();
         }
-        
+
         // Also handle window load for images
         window.addEventListener('load', () => {
             ScrollTrigger.refresh();
         });
     </script>
 </body>
+
 </html>
