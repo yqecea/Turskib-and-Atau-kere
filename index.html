@@ -2347,11 +2347,16 @@
             });
 
             function updateAtauImage(targetIndex) {
+                console.log('updateAtauImage called with targetIndex:', targetIndex);
                 // Find image with data-image-index == targetIndex
                 images.forEach(img => {
-                    if (parseInt(img.getAttribute('data-image-index')) === targetIndex) {
+                    const imgIndex = parseInt(img.getAttribute('data-image-index'));
+                    console.log('  Checking image with index:', imgIndex, '| Target:', targetIndex);
+                    if (imgIndex === targetIndex) {
+                        console.log('    -> Adding is-visible to image', imgIndex);
                         img.classList.add('is-visible');
                     } else {
+                        console.log('    -> Removing is-visible from image', imgIndex);
                         img.classList.remove('is-visible');
                     }
                 });
