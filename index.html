@@ -927,7 +927,7 @@
         }
 
         /* ============================================
-           ATAU-KERE SECTION (Sticky Image Layout)
+           ATAU-KERE SECTION (Inline Image Layout)
            ============================================ */
         .atau-section {
             background-color: var(--color-cold-bg);
@@ -961,81 +961,27 @@
 
         .atau-sticky-container {
             display: flex;
-            min-height: 300vh;
+            flex-direction: column;
             position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .atau-sticky-image-wrapper {
-            position: sticky;
-            top: 0;
-            width: 50%;
-            height: 100vh;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-
-        .atau-sticky-image {
-            position: absolute;
-            top: -15%;
-            left: -10%;
-            width: 120%;
-            height: 130%;
-            object-fit: cover;
-            filter: saturate(0.7) brightness(0.8);
-            will-change: transform, opacity;
-            opacity: 0;
-            transition: opacity 1.2s var(--ease-out-expo);
-            z-index: 0;
-        }
-
-        .atau-sticky-image.is-visible {
-            opacity: 1;
-            z-index: 1;
-        }
-
-        .atau-sticky-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right,
-                    transparent 0%,
-                    rgba(26, 32, 44, 0.3) 50%,
-                    rgba(26, 32, 44, 0.9) 100%);
-            z-index: 1;
-        }
-
-        .atau-sticky-decoration {
-            position: absolute;
-            bottom: var(--space-lg);
-            left: var(--space-lg);
-            z-index: 2;
-        }
-
-        .atau-sticky-decoration-text {
-            font-family: var(--font-display);
-            font-size: var(--fluid-3xl);
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.1);
-            letter-spacing: -0.02em;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-        }
-
+        /* Legacy wrapper class kept for structure, now full width */
         .atau-text-wrapper {
-            width: 50%;
-            padding: var(--space-2xl) var(--space-xl);
+            width: 100%;
+            padding: var(--space-xl) var(--space-lg);
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            gap: var(--space-2xl);
         }
 
         .atau-text-block {
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+            min-height: 60vh;
             padding: var(--space-lg) 0;
             opacity: 0.3;
             transform: translateY(50px);
@@ -1045,6 +991,41 @@
         .atau-text-block.is-active {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .atau-text-block:nth-child(even) {
+            direction: rtl; /* Alternating layout */
+        }
+
+        .atau-text-block:nth-child(even) .atau-block-content {
+            direction: ltr; /* Reset text direction */
+        }
+
+        .atau-block-image-wrapper {
+            width: 100%;
+            height: 500px; /* Fixed height for consistency */
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .atau-block-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.7) brightness(0.9);
+            transition: transform 1.2s var(--ease-out-expo);
+        }
+
+        .atau-text-block:hover .atau-block-image {
+            transform: scale(1.05);
+        }
+
+        .atau-block-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .atau-block-number {
@@ -1184,205 +1165,21 @@
             margin-top: var(--space-xs);
         }
 
-        /* ============================================
-           EPILOGUE SECTION
-           ============================================ */
-        .epilogue {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: var(--space-2xl) var(--space-lg);
-            background-color: var(--color-cold-bg);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .epilogue-bg-gradient {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at 50% 0%, rgba(113, 128, 150, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .epilogue-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-        }
-
-        .epilogue-quote-mark {
-            font-family: var(--font-display);
-            font-size: var(--fluid-5xl);
-            color: var(--color-cold-accent);
-            opacity: 0.3;
-            line-height: 1;
-            margin-bottom: var(--space-md);
-        }
-
-        .epilogue-text {
-            font-family: var(--font-display);
-            font-size: var(--fluid-2xl);
-            font-weight: 400;
-            line-height: 1.4;
-            letter-spacing: -0.01em;
-            color: var(--color-cold-text);
-            margin-bottom: var(--space-xl);
-        }
-
-        .epilogue-divider {
-            width: 100px;
-            height: 1px;
-            background-color: var(--color-cold-accent);
-            margin: var(--space-lg) auto;
-        }
-
-        .epilogue-credits {
-            font-family: var(--font-body);
-            font-size: var(--fluid-sm);
-            color: var(--color-cold-text-muted);
-            line-height: 1.8;
-        }
-
-        .epilogue-credits-title {
-            font-weight: 600;
-            color: var(--color-cold-accent-light);
-            display: block;
-            margin-bottom: var(--space-xs);
-        }
-
-        /* ============================================
-           FOOTER
-           ============================================ */
-        .footer {
-            padding: var(--space-xl) var(--space-lg);
-            background-color: var(--color-cold-bg);
-            border-top: 1px solid rgba(113, 128, 150, 0.2);
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: var(--space-md);
-        }
-
-        .footer-logo {
-            font-family: var(--font-display);
-            font-size: var(--fluid-lg);
-            font-weight: 600;
-            color: var(--color-cold-text);
-            letter-spacing: -0.02em;
-        }
-
-        .footer-text {
-            font-family: var(--font-body);
-            font-size: var(--fluid-xs);
-            color: var(--color-cold-text-muted);
-            text-align: right;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: var(--space-md);
-        }
-
-        .footer-link {
-            font-family: var(--font-body);
-            font-size: var(--fluid-xs);
-            color: var(--color-cold-accent-light);
-            text-decoration: none;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            position: relative;
-            padding-bottom: 0.25rem;
-            transition: color 0.4s var(--ease-out-expo);
-        }
-
-        .footer-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background-color: currentColor;
-            transform: scaleX(0);
-            transform-origin: right center;
-            transition: transform 0.4s var(--ease-out-expo);
-        }
-
-        .footer-link:hover {
-            color: var(--color-cold-text);
-        }
-
-        .footer-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: left center;
-        }
-
-        /* ============================================
-           RESPONSIVE ADJUSTMENTS
-           ============================================ */
         @media (max-width: 1024px) {
-            .atau-sticky-container {
-                flex-direction: column;
-            }
-
-            .atau-sticky-image-wrapper {
-                width: 100%;
-                height: 50vh;
-                position: relative;
-            }
-
-            .atau-text-wrapper {
-                width: 100%;
-                padding: var(--space-lg);
-            }
-
             .atau-text-block {
+                display: flex;
+                flex-direction: column;
                 min-height: auto;
-                padding: var(--space-xl) 0;
+                gap: var(--space-md);
+            }
+            
+            .atau-text-block:nth-child(even) {
+                direction: ltr;
             }
 
-            .atau-sticky-overlay {
-                background: linear-gradient(to bottom,
-                        transparent 0%,
-                        rgba(26, 32, 44, 0.5) 70%,
-                        rgba(26, 32, 44, 1) 100%);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-info {
-                display: none;
-            }
-
-            .hero-meta {
-                flex-direction: column;
-                gap: var(--space-sm);
-            }
-
-            .horizontal-card {
-                width: 85vw;
-                height: 60vh;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer-text {
-                text-align: center;
+            .atau-block-image-wrapper {
+                height: 300px;
+                order: -1; /* Image first on mobile */
             }
         }
 
@@ -1645,109 +1442,111 @@
             </div>
 
             <div class="atau-sticky-container">
-                <div class="atau-sticky-image-wrapper">
-                    <!-- Image 1: Forest -->
-                    <img src="assets/images/atau-forest.png" alt="Misty forest"
-                        class="atau-sticky-image parallax-image is-visible" data-image-index="1" loading="lazy">
-                    <!-- Image 2: Honey/Poison -->
-                    <img src="assets/images/atau-honey.png" alt="Honey bee with dark honey"
-                        class="atau-sticky-image parallax-image" data-image-index="2" loading="lazy">
-                    <!-- Image 3: Characters -->
-                    <img src="assets/images/atau-characters.png" alt="Silhouettes in mist"
-                        class="atau-sticky-image parallax-image" data-image-index="3" loading="lazy">
-                    <div class="atau-sticky-overlay"></div>
-                    <div class="atau-sticky-decoration">
-                        <span class="atau-sticky-decoration-text">ӨКІНІШ</span>
-                    </div>
-                </div>
-
                 <div class="atau-text-wrapper">
                     <!-- Block 1 -->
                     <div class="atau-text-block" id="atau-block-1">
-                        <span class="atau-block-number">01 — Кіріспе</span>
-                        <h3 class="atau-block-title">АТАУ-КЕРЕ. РУХАНИ АПАТ.</h3>
-                        <p class="atau-block-text">
-                            Оралхан Бөкей қаламынан туған «Атау-Кере» — жай ғана повесть емес. Бұл — адамзаттың
-                            табиғатпен, өзімен, рухани тамырларымен үзілген байланысының ащы жыры.
-                        </p>
-                        <blockquote class="atau-block-quote">
-                            «Табиғатты жаулап алу оңай. Бірақ одан кейін адам өзін-өзі жаулап ала ма?»
-                        </blockquote>
+                        <div class="atau-block-image-wrapper">
+                            <img src="assets/images/atau-forest.png" alt="Misty forest"
+                                class="atau-block-image parallax-image" loading="lazy">
+                        </div>
+                        <div class="atau-block-content">
+                            <span class="atau-block-number">01 — Кіріспе</span>
+                            <h3 class="atau-block-title">АТАУ-КЕРЕ. РУХАНИ АПАТ.</h3>
+                            <p class="atau-block-text">
+                                Оралхан Бөкей қаламынан туған «Атау-Кере» — жай ғана повесть емес. Бұл — адамзаттың
+                                табиғатпен, өзімен, рухани тамырларымен үзілген байланысының ащы жыры.
+                            </p>
+                            <blockquote class="atau-block-quote">
+                                «Табиғатты жаулап алу оңай. Бірақ одан кейін адам өзін-өзі жаулап ала ма?»
+                            </blockquote>
+                        </div>
                     </div>
 
                     <!-- Block 2 -->
                     <div class="atau-text-block" id="atau-block-2">
-                        <span class="atau-block-number">02 — Символика</span>
-                        <h3 class="atau-block-title">Бал мен у</h3>
-                        <p class="atau-block-text">
-                            Адамгершілік жоғалған жерде бал беретін араның өзі у жинайды. Ара — табиғаттың айнасы. Оның
-                            уы — адамның рухани азғындауының бейнесі.
-                        </p>
-                        <blockquote class="atau-block-quote">
-                            «Ара бал жинай алмай қалғанда, адам да рухани азық таба алмай қалады.»
-                        </blockquote>
+                        <div class="atau-block-image-wrapper">
+                            <img src="assets/images/atau-honey.png" alt="Honey bee with dark honey"
+                                class="atau-block-image parallax-image" loading="lazy">
+                        </div>
+                        <div class="atau-block-content">
+                            <span class="atau-block-number">02 — Символика</span>
+                            <h3 class="atau-block-title">Бал мен у</h3>
+                            <p class="atau-block-text">
+                                Адамгершілік жоғалған жерде бал беретін араның өзі у жинайды. Ара — табиғаттың айнасы. Оның
+                                уы — адамның рухани азғындауының бейнесі.
+                            </p>
+                            <blockquote class="atau-block-quote">
+                                «Ара бал жинай алмай қалғанда, адам да рухани азық таба алмай қалады.»
+                            </blockquote>
+                        </div>
                     </div>
 
                     <!-- Block 3 - Characters -->
                     <div class="atau-text-block" id="atau-block-3">
-                        <span class="atau-block-number">03 — Кейіпкерлер</span>
-                        <h3 class="atau-block-title">Кейіпкерлер галереясы</h3>
-                        <p class="atau-block-text">
-                            Әр кейіпкер — бір дәуірдің бейнесі. Олардың тағдыры — біздің ортақ тағдырымыздың айнасы.
-                        </p>
+                        <div class="atau-block-image-wrapper">
+                            <img src="assets/images/atau-characters.png" alt="Silhouettes in mist"
+                                class="atau-block-image parallax-image" loading="lazy">
+                        </div>
+                        <div class="atau-block-content">
+                            <span class="atau-block-number">03 — Кейіпкерлер</span>
+                            <h3 class="atau-block-title">Кейіпкерлер галереясы</h3>
+                            <p class="atau-block-text">
+                                Әр кейіпкер — бір дәуірдің бейнесі. Олардың тағдыры — біздің ортақ тағдырымыздың айнасы.
+                            </p>
 
-                        <div class="character-list">
-                            <!-- Таған -->
-                            <div class="character-item" data-cursor="hover">
-                                <div class="character-item-header">
-                                    <span class="character-name">Таған</span>
-                                    <span class="character-arrow">
-                                        <svg viewBox="0 0 24 24">
-                                            <line x1="12" y1="5" x2="12" y2="19"></line>
-                                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                                        </svg>
-                                    </span>
+                            <div class="character-list">
+                                <!-- Таған -->
+                                <div class="character-item" data-cursor="hover">
+                                    <div class="character-item-header">
+                                        <span class="character-name">Таған</span>
+                                        <span class="character-arrow">
+                                            <svg viewBox="0 0 24 24">
+                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="character-description">
+                                        Рухани дағдарысқа ұшыраған ғалым. Білімі бар, бірақ сол білім оны құтқара алмайды.
+                                        Табиғаттан алыстаған адамның трагедиясы — Тағанның тағдыры.
+                                        <span class="character-tag">Ғылым мен рух</span>
+                                    </div>
                                 </div>
-                                <div class="character-description">
-                                    Рухани дағдарысқа ұшыраған ғалым. Білімі бар, бірақ сол білім оны құтқара алмайды.
-                                    Табиғаттан алыстаған адамның трагедиясы — Тағанның тағдыры.
-                                    <span class="character-tag">Ғылым мен рух</span>
-                                </div>
-                            </div>
 
-                            <!-- Ерік -->
-                            <div class="character-item" data-cursor="hover">
-                                <div class="character-item-header">
-                                    <span class="character-name">Ерік</span>
-                                    <span class="character-arrow">
-                                        <svg viewBox="0 0 24 24">
-                                            <line x1="12" y1="5" x2="12" y2="19"></line>
-                                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                                        </svg>
-                                    </span>
+                                <!-- Ерік -->
+                                <div class="character-item" data-cursor="hover">
+                                    <div class="character-item-header">
+                                        <span class="character-name">Ерік</span>
+                                        <span class="character-arrow">
+                                            <svg viewBox="0 0 24 24">
+                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="character-description">
+                                        Жаңа заманның «маңгүрті». Тарихын, тілін, дәстүрін ұмытқан ұрпақтың өкілі. Оның
+                                        бейнесі — рухани жоғалудың ең қатал түрі.
+                                        <span class="character-tag">Жоғалған ұрпақ</span>
+                                    </div>
                                 </div>
-                                <div class="character-description">
-                                    Жаңа заманның «маңгүрті». Тарихын, тілін, дәстүрін ұмытқан ұрпақтың өкілі. Оның
-                                    бейнесі — рухани жоғалудың ең қатал түрі.
-                                    <span class="character-tag">Жоғалған ұрпақ</span>
-                                </div>
-                            </div>
 
-                            <!-- Нүрке ата -->
-                            <div class="character-item" data-cursor="hover">
-                                <div class="character-item-header">
-                                    <span class="character-name">Нүрке ата</span>
-                                    <span class="character-arrow">
-                                        <svg viewBox="0 0 24 24">
-                                            <line x1="12" y1="5" x2="12" y2="19"></line>
-                                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="character-description">
-                                    Дәстүр сақтаушысы. Ескі дүниенің соңғы өкілі. Оның даналығы — жаңа ұрпаққа жетпей
-                                    қалған мұра. Табиғатпен үндес өмір сүрудің соңғы куәсі.
-                                    <span class="character-tag">Дәстүр мен даналық</span>
+                                <!-- Нүрке ата -->
+                                <div class="character-item" data-cursor="hover">
+                                    <div class="character-item-header">
+                                        <span class="character-name">Нүрке ата</span>
+                                        <span class="character-arrow">
+                                            <svg viewBox="0 0 24 24">
+                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="character-description">
+                                        Дәстүр сақтаушысы. Ескі дүниенің соңғы өкілі. Оның даналығы — жаңа ұрпаққа жетпей
+                                        қалған мұра. Табиғатпен үндес өмір сүрудің соңғы куәсі.
+                                        <span class="character-tag">Дәстүр мен даналық</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2303,64 +2102,22 @@
         // ============================================
 
         function initAtauSection() {
-            const wrapper = document.querySelector('.atau-sticky-image-wrapper');
-            const images = wrapper.querySelectorAll('.atau-sticky-image');
             const blocks = DOM.atauBlocks;
 
-            // Parallax on sticky images container
-            // We animate the images themselves for parallax
-            images.forEach(image => {
-                gsap.to(image, {
-                    y: 100,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: '#atau-section',
-                        start: 'top bottom',
-                        end: 'bottom top',
-                        scrub: 1
-                    }
-                });
-            });
-
-            // Activate text blocks on scroll AND switch images
-            blocks.forEach((block, index) => {
+            // Activate text blocks on scroll
+            blocks.forEach((block) => {
                 ScrollTrigger.create({
                     trigger: block,
-                    start: 'top 60%',
-                    end: 'bottom 40%',
+                    start: 'top 80%',
+                    end: 'bottom 20%',
                     onEnter: () => {
                         block.classList.add('is-active');
-                        updateAtauImage(index + 1);
-                    },
-                    onLeave: () => {
-                        block.classList.remove('is-active');
-                    },
-                    onEnterBack: () => {
-                        block.classList.add('is-active');
-                        updateAtauImage(index + 1);
                     },
                     onLeaveBack: () => {
-                        block.classList.remove('is-active');
-                        if (index > 0) updateAtauImage(index); // Revert to previous image if going back
+                        block.classList.remove('is-active'); // Optional: remove if you want them to fade out when scrolling up
                     }
                 });
             });
-
-            function updateAtauImage(targetIndex) {
-                console.log('updateAtauImage called with targetIndex:', targetIndex);
-                // Find image with data-image-index == targetIndex
-                images.forEach(img => {
-                    const imgIndex = parseInt(img.getAttribute('data-image-index'));
-                    console.log('  Checking image with index:', imgIndex, '| Target:', targetIndex);
-                    if (imgIndex === targetIndex) {
-                        console.log('    -> Adding is-visible to image', imgIndex);
-                        img.classList.add('is-visible');
-                    } else {
-                        console.log('    -> Removing is-visible from image', imgIndex);
-                        img.classList.remove('is-visible');
-                    }
-                });
-            }
         }
 
         // ============================================
